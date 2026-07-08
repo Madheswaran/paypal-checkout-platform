@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/token-service.dir/src/main.cpp.o -o token-service 
