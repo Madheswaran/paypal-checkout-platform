@@ -1,10 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
+
 metadata:
   name: frontend
 
 spec:
-  replicas: 1
+
+  replicas: {{ .Values.replicaCount }}
 
   selector:
     matchLabels:
@@ -20,15 +22,16 @@ spec:
     spec:
 
       imagePullSecrets:
-
-      - name: acr-secret
+{{- toYaml .Values.imagePullSecrets | nindent 8 }}
 
       containers:
 
       - name: frontend
 
-        image: acrpaypal1783529914.azurecr.io/frontend:v1 
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
 
         ports:
 
-        - containerPort: 3001
+        - containerPort: {{ .Values.service.targetPort }}
