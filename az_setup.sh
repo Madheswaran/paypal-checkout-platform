@@ -82,41 +82,6 @@ az aks get-credentials \
     --name "$AKS_NAME" \
     --overwrite-existing
 
-echo
-echo "========== Enabling ACR Admin =========="
-
-az acr update \
-    --name "$ACR_NAME" \
-    --admin-enabled true
-
-echo
-echo "========== Getting ACR Credentials =========="
-
-ACR_USERNAME=$(az acr credential show \
-    --name "$ACR_NAME" \
-    --query username \
-    -o tsv)
-
-ACR_PASSWORD=$(az acr credential show \
-    --name "$ACR_NAME" \
-    --query "passwords[0].value" \
-    -o tsv)
 
 echo "ACR Username: $ACR_USERNAME"
-
-echo
-echo "========== Creating Image Pull Secret =========="
-
-kubectl delete secret $SECRET_NAME --ignore-not-found
-
-kubectl create secret docker-registry $SECRET_NAME \
-    --docker-server=$ACR_NAME.azurecr.io \
-    --docker-username=$ACR_NAME \
-    --docker-password="$ACR_PASSWORD"
-
-
-kubectl get pods
-kubectl get svc
-
-echo
 echo "Bootstrap completed successfully."

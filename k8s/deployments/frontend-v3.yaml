@@ -15,12 +15,11 @@ spec:
       labels:
         app: frontend-v3
     spec:
-      spec:
       imagePullSecrets:
       - name: acr-secret
       containers:
       - image: acrpaypal1783519282.azurecr.io/frontend:v3
-        name: frontend-v3
+        name: frontend
         ports:
         - containerPort: 3001
         resources: {}

@@ -9,12 +9,7 @@ sudo apt install -y \
     docker.io \
     tree
 
-echo
-echo "Installed versions:"
-g++ --version | head -1
-cmake --version | head -1
-make --version | head -1
-
+systemctl start docker
 #apt-get install -y git
 #git clone https://github.com/Madheswaran/paypal-checkout-platform.git
 git config --global user.name "Madheswaran Selvakumar"
