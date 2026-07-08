@@ -6,13 +6,7 @@ sudo apt update
 
 sudo apt install -y \
     curl \
-    unzip \
-    pkg-config
-
-sudo apt install -y \
-    build-essential \
-    cmake \
-    gdb \
+    docker.io \
     tree
 
 echo

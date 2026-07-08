@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: frontend-v2
+  name: frontend-v2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend-v2
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: frontend-v2
+    spec:
+      spec:
+      imagePullSecrets:
+      - name: acr-secret
+      containers:
+      - image: acrpaypal1783519282.azurecr.io/frontend:v2
+        name: frontend
+        ports:
+        - containerPort: 3001
+        resources: {}
+status: {}

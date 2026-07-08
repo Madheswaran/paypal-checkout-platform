@@ -15,8 +15,8 @@ SECRET_NAME="acr-secret"
 
 echo
 echo "========== Azure Login =========="
-#curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-#az login
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+az login
 
 echo "Available Resource Groups:"
 az group list -o table
@@ -37,7 +37,7 @@ then
 else
     echo "ACR already exists."
 fi
-if false; then
+
 echo
 echo "========== Creating AKS =========="
 
@@ -52,7 +52,7 @@ then
 else
     echo "AKS already exists."
 fi
-fi
+
 
 echo
 echo "========== Checking kubectl =========="
